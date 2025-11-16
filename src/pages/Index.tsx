@@ -68,7 +68,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b">
+      <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm shadow-sm z-50 border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -106,7 +106,7 @@ const Index = () => {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-primary/60"></div>
+        <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative z-10 text-center px-4 animate-fade-in">
           <h2 className="text-5xl md:text-7xl font-bold mb-6">Премиум-Парус</h2>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto font-light">
@@ -116,7 +116,7 @@ const Index = () => {
             <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
               Узнать больше
             </Button>
-            <Button size="lg" variant="outline" className="bg-white/10 text-white border-white hover:bg-white/20">
+            <Button size="lg" variant="outline" className="bg-white/10 text-white border-white hover:bg-white/20 hover:text-white">
               Связаться с нами
             </Button>
           </div>
@@ -196,7 +196,7 @@ const Index = () => {
                   alt={image.title}
                   className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                   <p className="text-white text-xl font-semibold p-6">{image.title}</p>
                 </div>
               </div>
@@ -215,7 +215,7 @@ const Index = () => {
           backgroundAttachment: 'fixed',
         }}
       >
-        <div className="absolute inset-0 bg-primary/85"></div>
+        <div className="absolute inset-0 bg-black/85"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center text-white">
             <Icon name="UtensilsCrossed" className="mx-auto mb-6 text-accent" size={64} />
