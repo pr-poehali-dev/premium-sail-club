@@ -7,6 +7,14 @@ import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [showLazyMessage, setShowLazyMessage] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
+
+  const handleBookingClick = () => {
+    setShowLazyMessage(true);
+    setClickCount(prev => prev + 1);
+    setTimeout(() => setShowLazyMessage(false), 3000);
+  };
 
   const services = [
     {
@@ -89,8 +97,22 @@ const Index = () => {
                 Контакты
               </a>
             </div>
-            <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <Button 
+              className="bg-accent text-accent-foreground hover:bg-accent/90 relative"
+              onClick={handleBookingClick}
+            >
               Забронировать
+              {showLazyMessage && (
+                <div className="absolute -top-24 left-1/2 transform -translate-x-1/2 bg-card border-2 border-primary rounded-lg px-4 py-3 shadow-xl animate-fade-in whitespace-nowrap">
+                  <div className="flex flex-col items-center gap-1">
+                    <div className="flex items-center gap-2">
+                      <Icon name="Frown" className="text-primary" size={20} />
+                      <span className="text-foreground font-medium">Нам лень</span>
+                    </div>
+                    <div className="text-xs text-muted-foreground">Нажатий: {clickCount}</div>
+                  </div>
+                </div>
+              )}
             </Button>
           </div>
         </div>
@@ -224,8 +246,23 @@ const Index = () => {
               Проведите незабываемый банкет или праздник в нашем ресторане с панорамным видом на реку и закат.
               Изысканная кухня, профессиональное обслуживание и атмосфера премиум-класса.
             </p>
-            <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <Button 
+              size="lg" 
+              className="bg-accent text-accent-foreground hover:bg-accent/90 relative"
+              onClick={handleBookingClick}
+            >
               Забронировать стол
+              {showLazyMessage && (
+                <div className="absolute -top-24 left-1/2 transform -translate-x-1/2 bg-card border-2 border-primary rounded-lg px-4 py-3 shadow-xl animate-fade-in whitespace-nowrap z-50">
+                  <div className="flex flex-col items-center gap-1">
+                    <div className="flex items-center gap-2">
+                      <Icon name="Frown" className="text-primary" size={20} />
+                      <span className="text-foreground font-medium">Нам лень</span>
+                    </div>
+                    <div className="text-xs text-muted-foreground">Нажатий: {clickCount}</div>
+                  </div>
+                </div>
+              )}
             </Button>
           </div>
         </div>
@@ -288,8 +325,26 @@ const Index = () => {
                   <div>
                     <Textarea placeholder="Сообщение" rows={4} className="border-2" />
                   </div>
-                  <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg">
+                  <Button 
+                    className="w-full bg-accent text-accent-foreground hover:bg-accent/90 relative" 
+                    size="lg"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleBookingClick();
+                    }}
+                  >
                     Отправить заявку
+                    {showLazyMessage && (
+                      <div className="absolute -top-24 left-1/2 transform -translate-x-1/2 bg-card border-2 border-primary rounded-lg px-4 py-3 shadow-xl animate-fade-in whitespace-nowrap z-50">
+                        <div className="flex flex-col items-center gap-1">
+                          <div className="flex items-center gap-2">
+                            <Icon name="Frown" className="text-primary" size={20} />
+                            <span className="text-foreground font-medium">Нам лень</span>
+                          </div>
+                          <div className="text-xs text-muted-foreground">Нажатий: {clickCount}</div>
+                        </div>
+                      </div>
+                    )}
                   </Button>
                 </form>
               </CardContent>
@@ -328,9 +383,14 @@ const Index = () => {
             <div>
               <h5 className="font-semibold mb-4">Соцсети</h5>
               <div className="flex gap-4">
+                <a href="https://t.me/CeriyXXll" target="_blank" rel="noopener noreferrer">
+                  <Icon name="Send" className="cursor-pointer hover:text-accent transition-colors" size={24} />
+                </a>
                 <Icon name="Instagram" className="cursor-pointer hover:text-accent transition-colors" size={24} />
                 <Icon name="Facebook" className="cursor-pointer hover:text-accent transition-colors" size={24} />
-                <Icon name="Youtube" className="cursor-pointer hover:text-accent transition-colors" size={24} />
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1" target="_blank" rel="noopener noreferrer">
+                  <Icon name="Youtube" className="cursor-pointer hover:text-accent transition-colors" size={24} />
+                </a>
               </div>
             </div>
           </div>
