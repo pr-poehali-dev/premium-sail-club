@@ -7,14 +7,6 @@ import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
-  const [showLazyMessage, setShowLazyMessage] = useState(false);
-  const [clickCount, setClickCount] = useState(0);
-
-  const handleBookingClick = () => {
-    setShowLazyMessage(true);
-    setClickCount(prev => prev + 1);
-    setTimeout(() => setShowLazyMessage(false), 3000);
-  };
 
   const services = [
     {
@@ -76,7 +68,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm shadow-sm z-50 border-b">
+      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -97,22 +89,8 @@ const Index = () => {
                 Контакты
               </a>
             </div>
-            <Button 
-              className="bg-accent text-accent-foreground hover:bg-accent/90 relative"
-              onClick={handleBookingClick}
-            >
+            <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
               Забронировать
-              {showLazyMessage && (
-                <div className="absolute -top-24 left-1/2 transform -translate-x-1/2 bg-card border-2 border-primary rounded-lg px-4 py-3 shadow-xl animate-fade-in whitespace-nowrap">
-                  <div className="flex flex-col items-center gap-1">
-                    <div className="flex items-center gap-2">
-                      <Icon name="Frown" className="text-primary" size={20} />
-                      <span className="text-foreground font-medium">Нам лень</span>
-                    </div>
-                    <div className="text-xs text-muted-foreground">Нажатий: {clickCount}</div>
-                  </div>
-                </div>
-              )}
             </Button>
           </div>
         </div>
@@ -128,7 +106,7 @@ const Index = () => {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-primary/60"></div>
         <div className="relative z-10 text-center px-4 animate-fade-in">
           <h2 className="text-5xl md:text-7xl font-bold mb-6">Премиум-Парус</h2>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto font-light">
@@ -138,7 +116,7 @@ const Index = () => {
             <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
               Узнать больше
             </Button>
-            <Button size="lg" variant="outline" className="bg-white/10 text-white border-white hover:bg-white/20 hover:text-white">
+            <Button size="lg" variant="outline" className="bg-white/10 text-white border-white hover:bg-white/20">
               Связаться с нами
             </Button>
           </div>
@@ -218,7 +196,7 @@ const Index = () => {
                   alt={image.title}
                   className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                   <p className="text-white text-xl font-semibold p-6">{image.title}</p>
                 </div>
               </div>
@@ -237,7 +215,7 @@ const Index = () => {
           backgroundAttachment: 'fixed',
         }}
       >
-        <div className="absolute inset-0 bg-black/85"></div>
+        <div className="absolute inset-0 bg-primary/85"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center text-white">
             <Icon name="UtensilsCrossed" className="mx-auto mb-6 text-accent" size={64} />
@@ -246,23 +224,8 @@ const Index = () => {
               Проведите незабываемый банкет или праздник в нашем ресторане с панорамным видом на реку и закат.
               Изысканная кухня, профессиональное обслуживание и атмосфера премиум-класса.
             </p>
-            <Button 
-              size="lg" 
-              className="bg-accent text-accent-foreground hover:bg-accent/90 relative"
-              onClick={handleBookingClick}
-            >
+            <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
               Забронировать стол
-              {showLazyMessage && (
-                <div className="absolute -top-24 left-1/2 transform -translate-x-1/2 bg-card border-2 border-primary rounded-lg px-4 py-3 shadow-xl animate-fade-in whitespace-nowrap z-50">
-                  <div className="flex flex-col items-center gap-1">
-                    <div className="flex items-center gap-2">
-                      <Icon name="Frown" className="text-primary" size={20} />
-                      <span className="text-foreground font-medium">Нам лень</span>
-                    </div>
-                    <div className="text-xs text-muted-foreground">Нажатий: {clickCount}</div>
-                  </div>
-                </div>
-              )}
             </Button>
           </div>
         </div>
@@ -325,26 +288,8 @@ const Index = () => {
                   <div>
                     <Textarea placeholder="Сообщение" rows={4} className="border-2" />
                   </div>
-                  <Button 
-                    className="w-full bg-accent text-accent-foreground hover:bg-accent/90 relative" 
-                    size="lg"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleBookingClick();
-                    }}
-                  >
+                  <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg">
                     Отправить заявку
-                    {showLazyMessage && (
-                      <div className="absolute -top-24 left-1/2 transform -translate-x-1/2 bg-card border-2 border-primary rounded-lg px-4 py-3 shadow-xl animate-fade-in whitespace-nowrap z-50">
-                        <div className="flex flex-col items-center gap-1">
-                          <div className="flex items-center gap-2">
-                            <Icon name="Frown" className="text-primary" size={20} />
-                            <span className="text-foreground font-medium">Нам лень</span>
-                          </div>
-                          <div className="text-xs text-muted-foreground">Нажатий: {clickCount}</div>
-                        </div>
-                      </div>
-                    )}
                   </Button>
                 </form>
               </CardContent>
@@ -383,14 +328,9 @@ const Index = () => {
             <div>
               <h5 className="font-semibold mb-4">Соцсети</h5>
               <div className="flex gap-4">
-                <a href="https://t.me/CeriyXXll" target="_blank" rel="noopener noreferrer">
-                  <Icon name="Send" className="cursor-pointer hover:text-accent transition-colors" size={24} />
-                </a>
                 <Icon name="Instagram" className="cursor-pointer hover:text-accent transition-colors" size={24} />
                 <Icon name="Facebook" className="cursor-pointer hover:text-accent transition-colors" size={24} />
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1" target="_blank" rel="noopener noreferrer">
-                  <Icon name="Youtube" className="cursor-pointer hover:text-accent transition-colors" size={24} />
-                </a>
+                <Icon name="Youtube" className="cursor-pointer hover:text-accent transition-colors" size={24} />
               </div>
             </div>
           </div>
